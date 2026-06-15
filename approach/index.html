@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investment Approach | Thompson Capital Group</title>
+  <meta name="description" content="Thompson Capital Group's investment philosophy: operator-led, long-horizon capital deployment focused on construction, government contracting, technology, and strategic advisory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0A1428; --navy2: #0D1B36;
+      --gold: #C9A55B; --gold2: #E2C07A;
+      --white: #FFFFFF; --offwhite: #F7F5F0;
+      --gray: #6B7280; --lightgray: #E5E7EB;
+      --charcoal: #1F2937; --text: #374151;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); color: var(--text); background: var(--white); overflow-x: hidden; line-height: 1.7; }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .gold-line { display: block; width: 60px; height: 2px; background: var(--gold); margin: 1.25rem 0; }
+    .gold-line--center { margin: 1.25rem auto; }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* NAV */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(10,20,40,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 40px rgba(0,0,0,0.4); padding: 1rem 0; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .nav-logo { display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; color: var(--white); letter-spacing: 0.04em; line-height: 1.2; }
+    .nav-logo-tag { font-size: 0.6rem; color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; font-weight: 500; }
+    .nav-links { display: flex; list-style: none; gap: 2.5rem; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.82); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; position: relative; transition: color var(--transition); }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width var(--transition); }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-cta { border: 1px solid var(--gold) !important; color: var(--gold) !important; padding: 0.5rem 1.2rem; border-radius: 2px; transition: background var(--transition), color var(--transition) !important; }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--navy) !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--white); }
+    .nav-mobile { display: none; flex-direction: column; background: var(--navy); border-top: 1px solid rgba(201,165,91,0.15); }
+    .nav-mobile.open { display: flex; }
+    .nav-mobile a { padding: 1rem 2rem; color: rgba(255,255,255,0.8); font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.05); transition: color var(--transition); }
+    .nav-mobile a:hover { color: var(--gold); }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; padding: 11rem 0 6rem; background: var(--navy); overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; opacity: 0.07; }
+    .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,20,40,0.92) 0%, rgba(10,20,40,0.6) 100%); }
+    .page-hero-content { position: relative; z-index: 2; }
+    .breadcrumb { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.5rem; animation: fadeUp 0.8s ease 0.2s both; }
+    .breadcrumb a { color: var(--gold); }
+    .breadcrumb span { margin: 0 0.5rem; }
+    .page-hero-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; animation: fadeUp 0.8s ease 0.3s both; }
+    .page-hero-title { font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 600; color: var(--white); line-height: 1.15; margin-bottom: 1.25rem; animation: fadeUp 0.8s ease 0.45s both; }
+    .page-hero-title em { color: var(--gold); font-style: italic; }
+    .page-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.65); max-width: 620px; line-height: 1.8; font-weight: 300; animation: fadeUp 0.8s ease 0.6s both; }
+
+    /* SECTIONS */
+    .section { padding: 7rem 0; }
+    .section-light { background: var(--white); }
+    .section-off { background: var(--offwhite); }
+    .section-dark { background: var(--navy); }
+    .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.75rem; }
+    .section-title { font-family: var(--serif); font-size: clamp(1.9rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--charcoal); line-height: 1.2; }
+    .section-body { font-size: 1.02rem; color: var(--gray); line-height: 1.85; max-width: 680px; }
+
+    /* PHILOSOPHY */
+    .philosophy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+    .philosophy-quote { border-left: 2px solid var(--gold); padding: 1.75rem 2rem; margin: 2rem 0; font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--charcoal); line-height: 1.7; background: var(--offwhite); }
+    .philosophy-image { width: 100%; height: 460px; object-fit: cover; border-radius: 2px; }
+
+    /* APPROACH PILLARS */
+    .approach-steps { display: flex; flex-direction: column; gap: 0; }
+    .approach-step { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--lightgray); align-items: start; }
+    .approach-step:last-child { border-bottom: none; }
+    .approach-step-num { font-family: var(--serif); font-size: 3.5rem; color: rgba(201,165,91,0.18); font-weight: 700; line-height: 1; text-align: right; padding-top: 0.15rem; }
+    .approach-step-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .approach-step-body { font-size: 0.93rem; color: var(--gray); line-height: 1.85; }
+
+    /* CRITERIA */
+    .criteria-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+    .criteria-col-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--white); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(201,165,91,0.2); }
+    .criteria-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+    .criteria-list li { font-size: 0.9rem; color: rgba(255,255,255,0.55); padding-left: 1.5rem; position: relative; line-height: 1.6; }
+    .criteria-list li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; font-weight: 700; }
+    .criteria-list.no { }
+    .criteria-list.no li::before { content: '✕'; color: rgba(201,165,91,0.4); }
+
+    /* PARTNER TYPES */
+    .partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .partner-card { padding: 2.25rem; border: 1px solid var(--lightgray); border-top: 3px solid var(--gold); border-radius: 2px; transition: box-shadow var(--transition), transform var(--transition); }
+    .partner-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.07); transform: translateY(-3px); }
+    .partner-card-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin-bottom: 0.6rem; }
+    .partner-card-body { font-size: 0.87rem; color: var(--gray); line-height: 1.8; }
+
+    /* FOOTER */
+    footer { background: #060E1C; padding: 5rem 0 2rem; border-top: 1px solid rgba(201,165,91,0.1); }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .footer-brand-name { font-family: var(--serif); font-size: 1.3rem; color: var(--white); font-weight: 600; margin-bottom: 0.5rem; }
+    .footer-brand-tag { font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1.25rem; }
+    .footer-brand-desc { font-size: 0.85rem; color: rgba(255,255,255,0.4); line-height: 1.8; max-width: 280px; }
+    .footer-col-title { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1.5rem; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-links a { font-size: 0.85rem; color: rgba(255,255,255,0.45); transition: color var(--transition); }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-item { display: flex; gap: 0.6rem; margin-bottom: 0.9rem; align-items: flex-start; }
+    .footer-contact-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+    .footer-contact-text { font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+    .footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.72rem; color: rgba(255,255,255,0.25); transition: color var(--transition); }
+    .footer-legal a:hover { color: var(--gold); }
+    .footer-disclaimer { font-size: 0.7rem; color: rgba(255,255,255,0.18); line-height: 1.7; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 1.5rem; }
+    .btn-primary { background: var(--gold); color: var(--navy); padding: 0.9rem 2.2rem; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; border-radius: 2px; border: 2px solid var(--gold); transition: background var(--transition), transform var(--transition); display: inline-block; }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+    .cta-strip { background: var(--offwhite); padding: 5rem 0; text-align: center; }
+    .cta-strip h2 { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--charcoal); margin-bottom: 1rem; }
+    .cta-strip p { font-size: 1rem; color: var(--gray); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 1024px) {
+      .philosophy-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .criteria-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .partner-grid { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .approach-step { grid-template-columns: 60px 1fr; }
+      .approach-step-num { font-size: 2.5rem; }
+      .partner-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <span class="nav-logo-name">Thompson Capital Group</span>
+        <span class="nav-logo-tag">Legacy · Capital · Execution</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/about">About the Family</a></li>
+        <li><a href="/expertise">Our Expertise</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/approach" class="active">Investment Approach</a></li>
+        <li><a href="/leadership">Leadership</a></li>
+        <li><a href="/contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="/about" onclick="closeMenu()">About the Family</a>
+      <a href="/expertise" onclick="closeMenu()">Our Expertise</a>
+      <a href="/portfolio" onclick="closeMenu()">Portfolio Companies</a>
+      <a href="/approach" onclick="closeMenu()">Investment Approach</a>
+      <a href="/leadership" onclick="closeMenu()">Leadership</a>
+      <a href="/contact" onclick="closeMenu()">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="container page-hero-content">
+      <div class="breadcrumb"><a href="/">Home</a><span>›</span>Investment Approach</div>
+      <p class="page-hero-label">How We Think</p>
+      <h1 class="page-hero-title">Disciplined Capital,<br/><em>Operator-Led Conviction</em></h1>
+      <p class="page-hero-sub">Thompson Capital Group does not follow consensus. We deploy capital into sectors we know, at valuations that reflect reality, alongside management teams we trust — because we have either built these types of businesses ourselves or spent decades working inside them.</p>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="philosophy-grid">
+        <div class="reveal">
+          <p class="section-label">Investment Philosophy</p>
+          <h2 class="section-title">We Invest Where We Have an Edge</h2>
+          <span class="gold-line"></span>
+          <p class="section-body">Most capital allocators are generalists — they follow data, models, and market trends into sectors where they have no operational knowledge. Thompson Capital Group takes the opposite approach: we invest exclusively in sectors where our principals bring hands-on expertise, earned relationships, and a competitive information advantage.</p>
+          <div class="philosophy-quote">
+            "Capital without operator insight is just risk. We invest in what we know, with people we trust, at prices that make sense."
+          </div>
+          <p class="section-body">This discipline has kept us out of fashionable sectors when they were overheated and positioned us to act decisively when durable opportunities emerge in our core verticals. We are not trying to find the next technology unicorn — we are building and acquiring businesses that will still be here in twenty years, growing steadily, producing real cash flows, and serving markets that never go away.</p>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80" alt="Thompson Capital Group investment approach" class="philosophy-image" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH STEPS -->
+  <section class="section section-off">
+    <div class="container">
+      <div style="max-width: 620px; margin-bottom: 4rem;" class="reveal">
+        <p class="section-label">The TCG Process</p>
+        <h2 class="section-title">Four Pillars of Our Investment Framework</h2>
+        <span class="gold-line"></span>
+      </div>
+      <div class="approach-steps">
+        <div class="approach-step reveal">
+          <div class="approach-step-num">01</div>
+          <div>
+            <div class="approach-step-title">Operator-Led Underwriting</div>
+            <p class="approach-step-body">Before any capital is committed, our principals evaluate each opportunity as operators — not as financial analysts. We ask: can we run this business? Do we understand its customers, its cost structure, its competitive dynamics, and its key risks at an operational level? We only proceed when the answer is yes. This discipline eliminates sectors that look attractive on a spreadsheet but would require us to be passive passengers. We are drivers, not back-seat allocators.</p>
+          </div>
+        </div>
+        <div class="approach-step reveal reveal-delay-1">
+          <div class="approach-step-num">02</div>
+          <div>
+            <div class="approach-step-title">Long-Horizon Holding Philosophy</div>
+            <p class="approach-step-body">TCG does not invest with a defined exit mandate. We are not a fund with a five-year life cycle that needs to distribute proceeds by a fixed date. As a family firm, we hold operating assets as long as they continue to create value — through economic cycles, competitive shifts, and management transitions. This patience is a genuine competitive advantage: we can make decisions that a fund manager with investor quarterly reporting could never justify, because our time horizon is genuinely indefinite.</p>
+          </div>
+        </div>
+        <div class="approach-step reveal reveal-delay-2">
+          <div class="approach-step-num">03</div>
+          <div>
+            <div class="approach-step-title">Active Value Creation</div>
+            <p class="approach-step-body">After investment, our principals become active participants in building value. This means joining boards, engaging with management teams, providing strategic introductions, lending our government contracting relationships to portfolio company business development, and deploying follow-on capital when attractive reinvestment opportunities arise within our holdings. We do not file quarterly reports and wait — we work alongside the businesses we own to drive results.</p>
+          </div>
+        </div>
+        <div class="approach-step reveal reveal-delay-3">
+          <div class="approach-step-num">04</div>
+          <div>
+            <div class="approach-step-title">Conservative Capital Structure</div>
+            <p class="approach-step-body">Thompson Capital Group does not engineer returns through leverage. We use moderate, sustainable debt structures that do not put businesses at existential risk during downturns. Our focus is on businesses that generate real free cash flow, operate with strong balance sheets, and can service their obligations comfortably even in adverse conditions. We have watched overleveraged businesses owned by institutional capital collapse during market stress — we have no interest in replicating that model.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT CRITERIA -->
+  <section class="section section-dark">
+    <div class="container">
+      <div style="max-width: 620px; margin: 0 auto 4rem; text-align: center;" class="reveal">
+        <p class="section-label">What We Look For</p>
+        <h2 class="section-title" style="color: var(--white);">Investment Criteria</h2>
+        <span class="gold-line gold-line--center"></span>
+      </div>
+      <div class="criteria-grid">
+        <div class="reveal">
+          <div class="criteria-col-title">What We Seek</div>
+          <ul class="criteria-list">
+            <li>Operating companies in our four core verticals with $2M–$75M in revenue</li>
+            <li>Businesses with demonstrated cash flow and real customer relationships</li>
+            <li>Companies where our operational expertise creates competitive advantage post-investment</li>
+            <li>Government contractors with established past performance and contract vehicles</li>
+            <li>Construction companies with bonding capacity, skilled workforce, and equipment depth</li>
+            <li>Management teams who want a long-term capital partner, not a near-term exit buyer</li>
+            <li>Industries where barriers to entry are built over time through relationships and reputation</li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="criteria-col-title">What We Avoid</div>
+          <ul class="criteria-list no">
+            <li>Pre-revenue, venture-stage businesses requiring speculative return assumptions</li>
+            <li>Sectors outside our core four verticals where we have no operational edge</li>
+            <li>Businesses dependent on a single customer, contract, or key person</li>
+            <li>Overly leveraged opportunities where capital structure creates existential risk</li>
+            <li>Consumer technology, biotech, and other high-speculation sectors</li>
+            <li>Passive investment structures where we have no governance rights or operational influence</li>
+            <li>Short-term flips or financial engineering — we build, we do not churn</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNER TYPES -->
+  <section class="section section-light">
+    <div class="container">
+      <div style="max-width: 620px; margin-bottom: 4rem;" class="reveal">
+        <p class="section-label">Working With TCG</p>
+        <h2 class="section-title">Who We Partner With</h2>
+        <span class="gold-line"></span>
+        <p class="section-body">TCG selectively engages with capital partners, co-investors, and strategic operators who add genuine value beyond their check — people and institutions who share our values and our long-term orientation.</p>
+      </div>
+      <div class="partner-grid">
+        <div class="partner-card reveal">
+          <div class="partner-card-title">Accredited Investors &amp; Family Offices</div>
+          <p class="partner-card-body">We work with accredited investors and single-family offices seeking exposure to our core sectors — construction, government contracting, and enterprise technology — through co-investment structures alongside TCG principals.</p>
+        </div>
+        <div class="partner-card reveal reveal-delay-1">
+          <div class="partner-card-title">Institutional Capital Partners</div>
+          <p class="partner-card-body">We engage with institutional partners — endowments, foundations, and fund managers — seeking to deploy capital into operating company transactions in the construction and government services sectors alongside an experienced operator team.</p>
+        </div>
+        <div class="partner-card reveal reveal-delay-2">
+          <div class="partner-card-title">Strategic Operating Partners</div>
+          <p class="partner-card-body">We partner with executives and operators who want to build or acquire a business in our focus sectors and are seeking capital, strategic support, and a long-term co-owner who is active, aligned, and experienced in the industry.</p>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-card-title">Government Prime Contractors</div>
+          <p class="partner-card-body">We engage with DoD and federal prime contractors seeking teaming partners, subcontractors, or joint venture structures that benefit from Thompson's relationship network, past performance, and domain expertise in program support and IT services.</p>
+        </div>
+        <div class="partner-card reveal reveal-delay-1">
+          <div class="partner-card-title">Business Owners Seeking Succession</div>
+          <p class="partner-card-body">We are a natural acquirer for founders and business owners in our sectors who want to transition their company to a partner who will operate it with the same care and commitment they built it with — not a private equity buyer seeking a quick flip.</p>
+        </div>
+        <div class="partner-card reveal reveal-delay-2">
+          <div class="partner-card-title">Construction &amp; Trade Companies</div>
+          <p class="partner-card-body">We partner with construction, roofing, and specialty trade companies seeking growth capital, strategic partnership, or acquisition by a family-owned firm that understands the operational realities of the construction business.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div class="container reveal">
+      <p class="section-label" style="text-align:center;">Take the Next Step</p>
+      <h2>Does Our Approach Align With Yours?</h2>
+      <p>If you are an investor, operator, or business owner who sees the world the way we do, we would welcome a confidential conversation. All inquiries are reviewed personally by firm principals.</p>
+      <a href="/contact" class="btn-primary">Submit a Qualified Inquiry</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand-name">Thompson Capital Group</div>
+          <div class="footer-brand-tag">Legacy · Capital · Execution</div>
+          <p class="footer-brand-desc">A family-owned private investment and consulting firm deploying capital into construction, infrastructure, technology, and government contracting opportunities.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="/about">About the Family</a></li>
+            <li><a href="/expertise">Our Expertise</a></li>
+            <li><a href="/portfolio">Portfolio Companies</a></li>
+            <li><a href="/approach">Investment Approach</a></li>
+            <li><a href="/leadership">Leadership</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Portfolio</div>
+          <ul class="footer-links">
+            <li><a href="https://truettconstruction.com" target="_blank" rel="noopener">Truett Construction</a></li>
+            <li><a href="https://truettroofingva.com" target="_blank" rel="noopener">Truett Roofing &amp; Exteriors</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="footer-contact-text">Virginia, United States</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg class="footer-contact-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="footer-contact-text">Inquiries via secure form</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2024 Thompson Capital Group. All rights reserved.</span>
+        <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Disclaimer</a></div>
+      </div>
+      <p class="footer-disclaimer">Thompson Capital Group is a private investment and consulting firm. This website is for informational purposes only and does not constitute an offer to sell or a solicitation to buy any securities. Investment in private companies involves significant risk. This communication is intended for sophisticated and accredited investors only.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    function closeMenu() { navMobile.classList.remove('open'); }
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
