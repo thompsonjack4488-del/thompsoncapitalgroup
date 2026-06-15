@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* =========================================
+    /* ========================================
        RESET & BASE
     ========================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,7 +61,7 @@
 
     .gold-line--center { margin: 1.25rem auto; }
 
-    /* =========================================
+    /* ========================================
        FADE-IN ANIMATIONS
     ========================================= */
     .reveal {
@@ -78,9 +78,9 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* =========================================
+    /* ========================================
        NAVIGATION
-    ========================================= */
+    ======================================== */
     #navbar {
       position: fixed;
       top: 0;
@@ -193,9 +193,9 @@
       transition: var(--transition);
     }
 
-    /* =========================================
+    /* ========================================
        HERO
-    ========================================= */
+    ======================================== */
     #hero {
       position: relative;
       height: 100vh;
@@ -209,7 +209,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1920&q=80');
+      background-image: url('https://images.unsplash.com/photo-1764463263232-557c1ea97e88?auto=format&fit=crop&w=1920&q=80');
       background-size: cover;
       background-position: center 40%;
       transform: scale(1.05);
@@ -859,6 +859,20 @@
       gap: 2rem;
     }
 
+    .leadership-grid .leader-card--memorial {
+      grid-column: span 1;
+    }
+
+    @media (min-width: 1025px) {
+      .leadership-grid--five > .leader-card:nth-child(4),
+      .leadership-grid--five > .leader-card:nth-child(5) {
+        grid-column: span 1;
+      }
+      .leadership-grid--five {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     .leader-card {
       background: var(--white);
       border: 1px solid var(--lightgray);
@@ -1294,24 +1308,24 @@
         <span class="nav-logo-tag">Legacy Â· Capital Â· Execution</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#about">About the Family</a></li>
-        <li><a href="#expertise">Our Expertise</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#approach">Investment Approach</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#cta" class="nav-cta">Contact</a></li>
+        <li><a href="/about">About the Family</a></li>
+        <li><a href="/expertise">Our Expertise</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="/approach">Investment Approach</a></li>
+        <li><a href="/leadership">Leadership</a></li>
+        <li><a href="/contact" class="nav-cta">Contact</a></li>
       </ul>
       <div class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </div>
     </div>
     <div class="nav-mobile" id="navMobile">
-      <a href="#about" onclick="closeMenu()">About the Family</a>
-      <a href="#expertise" onclick="closeMenu()">Our Expertise</a>
-      <a href="#portfolio" onclick="closeMenu()">Portfolio Companies</a>
-      <a href="#approach" onclick="closeMenu()">Investment Approach</a>
-      <a href="#leadership" onclick="closeMenu()">Leadership</a>
-      <a href="#cta" onclick="closeMenu()">Contact Us</a>
+      <a href="/about" onclick="closeMenu()">About the Family</a>
+      <a href="/expertise" onclick="closeMenu()">Our Expertise</a>
+      <a href="/portfolio" onclick="closeMenu()">PortFolio Companies</a>
+      <a href="/approach" onclick="closeMenu()">Investment Approach</a>
+      <a href="/leadership" onclick="closeMenu()">Leadership</a>
+      <a href="/contact" onclick="closeMenu()">Contact Us</a>
     </div>
   </nav>
 
@@ -1334,7 +1348,7 @@
     </div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow">Est. Thompson Family Â· Private Investment &amp; Consulting</p>
+      <p class="hero-eyebrow">Est. Thompson Family ¨7 Private Investment &amp; Consulting</p>
       <h1 class="hero-title">
         Thompson Capital Group<br/>
         <span>Legacy. Capital. Execution.</span>
@@ -1406,7 +1420,7 @@
           <h2 class="section-title">A Legacy Built on Integrity, Execution, and Generational Vision</h2>
           <span class="gold-line"></span>
           <p class="section-body">
-            Thompson Capital Group was founded by patriarch <strong>Paul "Rod" Thompson</strong>, whose decades of leadership established the firm's culture of disciplined execution and unwavering integrity. The firm is now spearheaded by his oldest grandson, <strong>Jack Thompson</strong>, who leads a tightly governed family officer group with deep expertise spanning high-level consulting, enterprise IT systems, multi-million dollar Department of Defense and government contracts, and large-scale commercial construction and roofing operations.
+            Thompson Capital Group carries forward a legacy rooted in the founding vision of <strong>Paul "Rod" Thompson</strong>, who built Thompson Consulting Group in 2004 into a respected government contracting and advisory firm. That culture of disciplined execution and principled leadership now lives in TCG, led by <strong>Jack Thompson</strong> alongside managing principals <strong>David Thompson</strong>, <strong>James Thompson</strong>, and <strong>Luke Thompson</strong> â a tightly governed family officer group with deep expertise spanning enterprise IT, Department of Defense contracting, and large-scale commercial construction.
           </p>
           <blockquote class="about-quote">
             "We don't chase deals. We build companies, honor commitments, and create value that endures across generations."
@@ -1529,7 +1543,7 @@
   <section id="portfolio" class="section section-dark">
     <div class="container">
       <div class="portfolio-header reveal">
-        <p class="section-label">PortFolio Companies</p>
+        <p class="section-label">Portfolio Companies</p>
         <h2 class="section-title section-title--light">Our Flagship Operating Companies</h2>
         <span class="gold-line gold-line--center"></span>
         <p class="section-body section-body--light" style="margin:0 auto; text-align:center;">
@@ -1641,10 +1655,10 @@
     <div class="container">
       <div class="leadership-header reveal">
         <p class="section-label">Leadership</p>
-        <h2 class="section-title">The Family Officers</span></h2>
+        <h2 class="section-title">The Family Officers</h2>
         <span class="gold-line gold-line--center"></span>
         <p class="section-body" style="margin:0 auto; text-align:center;">
-          Thompson Capital Group is governed by a close-knit family officer group with decades of combined experience across the verticals in which we invest.
+          Thompson Capital Group is governed by a close-knit family officer group â Jack, David, James, and Luke Thompson â carrying forward decades of combined experience across the verticals in which we invest.
         </p>
       </div>
       <div class="leadership-grid">
@@ -1661,7 +1675,7 @@
             <div class="leader-name">Jack Thompson</div>
             <div class="leader-title">Principal &amp; Managing Director</div>
             <p class="leader-bio">
-              The oldest grandson of founder Paul "Rod" Thompson, Jack serves as the firm's chief executive and primary capital allocator. With a background spanning enterprise IT, strategic advisory, and operational leadership across the firm's portfolio companies, Jack brings a multi-disciplinary approach to investment decision-making. He is responsible for deal origination, partner relations, and the long-term strategic direction of Thompson Capital Group.
+              Jack serves as TCG's chief executive and primary capital allocator. With a background spanning enterprise IT systems, strategic advisory, and operational leadership across the firm's portfolio companies, he brings a multi-disciplinary approach to investment decision-making. Jack is responsible for deal origination, partner relations, and the long-term strategic direction of Thompson Capital Group.
             </p>
           </div>
         </div>
@@ -1677,26 +1691,60 @@
           <div class="leader-gold-bar"></div>
           <div class="leader-info">
             <div class="leader-name">Paul "Rod" Thompson</div>
-            <div class="leader-title">Founder &amp; Patriarch Â· In Memoriam</div>
+            <div class="leader-title">Founder, Thompson Consulting Group Â· In Memoriam</div>
             <p class="leader-bio">
-              Paul "Rod" Thompson founded Thompson Capital Group with a vision for multi-generational wealth creation anchored in operational excellence and principled leadership. A seasoned entrepreneur and business leader, Rod established the firm's culture of accountability, integrity, and long-term thinking that continues to govern every capital decision made in the firm's name. His legacy endures in every company, contract, and commitment bearing the Thompson name.
+              In 2004, Rod founded Thompson Consulting Group and built it into a respected government contracting and advisory firm through decades of principled leadership. The culture of accountability, integrity, and long-term thinking he instilled continues to govern every decision made under the Thompson name. His legacy endures in every company, contract, and commitment the family carries forward.
             </p>
           </div>
         </div>
 
-        <!-- Family Officers -->
+        <!-- David Thompson -->
         <div class="leader-card reveal reveal-delay-2">
           <div class="leader-image-wrap">
             <div class="leader-image-placeholder">
-              <span class="leader-monogram">TCG</span>
+              <span class="leader-monogram">DT</span>
             </div>
           </div>
           <div class="leader-gold-bar"></div>
           <div class="leader-info">
-            <div class="leader-name">Family Officer Group</div>
-            <div class="leader-title">Senior Advisory Council</div>
+            <div class="leader-name">David Thompson</div>
+            <div class="leader-title">Managing Principal</div>
             <p class="leader-bio">
-              Thompson Capital Group is supported by a select group of family officers with deep domain expertise in high-level consulting, Department of Defense and federal procurement, enterprise IT systems architecture, and large-scale commercial construction. This council provides governance oversight, strategic counsel, and operational credibility across every vertical the firm participates in.
+              David serves as a managing principal of Thompson Capital Group, contributing leadership across the firm's investment and operational verticals. His involvement reflects the family's commitment to multi-generational governance and disciplined capital stewardship.
+            </p>
+          </div>
+        </div>
+
+        <!-- James Thompson -->
+        <div class="leader-card reveal reveal-delay-3">
+          <div class="leader-image-wrap">
+            <div class="leader-image-placeholder">
+              <span class="leader-monogram">JT</span>
+            </div>
+          </div>
+          <div class="leader-gold-bar"></div>
+          <div class="leader-info">
+            <div class="leader-name">James Thompson</div>
+            <div class="leader-title">Managing Principal</div>
+            <p class="leader-bio">
+              James brings operational depth and strategic perspective to Thompson Capital Group's family officer council. As a managing principal, he helps govern the firm's portfolio decisions and maintains the standards of execution the Thompson name demands.
+            </p>
+          </div>
+        </div>
+
+        <!-- Luke Thompson -->
+        <div class="leader-card reveal reveal-delay-4">
+          <div class="leader-image-wrap">
+            <div class="leader-image-placeholder">
+              <span class="leader-monogram">LT</span>
+            </div>
+          </div>
+          <div class="leader-gold-bar"></div>
+          <div class="leader-info">
+            <div class="leader-name">Luke Thompson</div>
+            <div class="leader-title">Managing Principal</div>
+            <p class="leader-bio">
+              Luke serves as a managing principal, bringing a forward-looking perspective to the firm's growth initiatives. His leadership within TCG's family officer structure ensures continuity of vision and rigorous oversight across every capital relationship the firm enters.
             </p>
           </div>
         </div>
@@ -1705,7 +1753,7 @@
     </div>
   </section>
 
-  <!-- ========== CTA========== -->
+  <!-- ========== CTA ========== -->
   <section id="cta" class="section">
     <div class="container">
       <div class="cta-inner">
@@ -1783,12 +1831,12 @@
         <div>
           <div class="footer-col-title">Navigation</div>
           <ul class="footer-links">
-            <li><a href="#about">About the Family</a></li>
-            <li><a href="#expertise">Our Expertise</a></li>
-            <li><a href="#portfolio">Portfolio Companies</a></li>
-            <li><a href="#approach">Investment Approach</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#cta">Contact Us</a></li>
+            <li><a href="/about">About the Family</a></li>
+            <li><a href="/expertise">Our Expertise</a></li>
+            <li><a href="/portfolio">PortFolio Companies</a></li>
+            <li><a href="/approach">Investment Approach</a></li>
+            <li><a href="/leadership">Leadership</a></li>
+            <li><a href="/contact">Contact Us</a></li>
           </ul>
         </div>
         <div>
@@ -1850,66 +1898,4 @@
     }, { passive: true });
 
     /* ---- Mobile menu ---- */
-    const hamburger = document.getElementById('hamburger');
-    const navMobile = document.getElementById('navMobile');
-    hamburger.addEventListener('click', () => {
-      navMobile.classList.toggle('open');
-    });
-
-    function closeMenu() {
-      navMobile.classList.remove('open');
-    }
-
-    /* ---- Scroll reveal (Intersection Observer) ---- */
-    const revealElements = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    revealElements.forEach(el => observer.observe(el));
-
-    /* ---- Form submission handler ---- */
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = 'Inquiry Submitted â';
-      btn.style.background = '#4a7c59';
-      btn.style.color = '#fff';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Submit Inquiry';
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-        e.target.reset();
-      }, 4000);
-    }
-
-    /* ---- Active nav link highlight on scroll ---- */
-    const sections = document.querySelectorAll('section[id], div[id]');
-    const navLinksAll = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (window.scrollY >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-      navLinksAll.forEach(link => {
-        link.style.color = '';
-        if (link.getAttribute('href') === '#' + current) {
-          link.style.color = 'var(--gold)';
-        }
-      });
-    }, { passive: true });
-  </script>
-
-</body>
-</h
+    const hamburger = document.getEle
