@@ -729,6 +729,36 @@
       margin-bottom: 1.25rem;
     }
 
+    .portfolio-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 0.25rem 0 1.5rem;
+      flex-wrap: wrap;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(201,165,91,0.12);
+    }
+
+    .portfolio-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .portfolio-stat-num {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .portfolio-stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
     .portfolio-card-body {
       font-size: 0.88rem;
       color: rgba(255,255,255,0.6);
@@ -843,6 +873,140 @@
       color: rgba(255,255,255,0.55);
       margin-top: 0.3rem;
     }
+
+    /* =========================================
+       LEGACY / FOUNDER STRIP
+    ========================================= */
+    .legacy-strip {
+      background: var(--navy);
+      padding: 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .legacy-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 30%, rgba(201,165,91,0.07), transparent 60%);
+      pointer-events: none;
+    }
+
+    .legacy-inner {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .legacy-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(201,165,91,0.25);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .legacy-monogram-wrap {
+      height: 260px;
+      background: rgba(255,255,255,0.02);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .legacy-monogram {
+      font-family: var(--serif);
+      font-size: 5rem;
+      font-weight: 700;
+      color: rgba(201,165,91,0.2);
+    }
+
+    .legacy-monogram-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(201,165,91,0.5);
+    }
+
+    .legacy-gold-bar {
+      height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+
+    .legacy-card-info {
+      padding: 1.5rem 2rem;
+    }
+
+    .legacy-card-name {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 0.25rem;
+    }
+
+    .legacy-card-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(201,165,91,0.6);
+    }
+
+    .legacy-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .legacy-name {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .legacy-quote {
+      border-left: 2px solid rgba(201,165,91,0.4);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+    }
+
+    .legacy-body {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.85;
+      max-width: 620px;
+      margin-bottom: 1rem;
+    }
+
+    .legacy-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      transition: gap var(--transition);
+    }
+
+    .legacy-link:hover { gap: 0.85rem; }
 
     /* =========================================
        LEADERSHIP
@@ -1239,6 +1403,9 @@
       .approach-grid,
       .cta-inner { grid-template-columns: 1fr; gap: 3rem; }
 
+      .legacy-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .legacy-card { max-width: 380px; }
+
       .expertise-grid { grid-template-columns: repeat(2, 1fr); }
       .portfolio-grid { grid-template-columns: 1fr; }
       .leadership-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1305,7 +1472,7 @@
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
         <span class="nav-logo-name">Thompson Capital Group</span>
-        <span class="nav-logo-tag">Legacy Â· Capital Â· Execution</span>
+        <span class="nav-logo-tag">Legacy · Capital · Execution</span>
       </a>
       <ul class="nav-links">
         <li><a href="/about">About the Family</a></li>
@@ -1348,7 +1515,7 @@
     </div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow">Est. Thompson Family ¨7 Private Investment &amp; Consulting</p>
+      <p class="hero-eyebrow">Est. Thompson Family · Private Investment &amp; Consulting</p>
       <h1 class="hero-title">
         Thompson Capital Group<br/>
         <span>Legacy. Capital. Execution.</span>
@@ -1410,7 +1577,7 @@
           <img
             class="about-image"
             src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80"
-            alt="Professional executive handshake â Thompson Capital Group"
+            alt="Professional executive handshake — Thompson Capital Group"
             loading="lazy"
           />
           <div class="about-image-accent2"></div>
@@ -1420,13 +1587,13 @@
           <h2 class="section-title">A Legacy Built on Integrity, Execution, and Generational Vision</h2>
           <span class="gold-line"></span>
           <p class="section-body">
-            Thompson Capital Group carries forward a legacy rooted in the founding vision of <strong>Paul "Rod" Thompson</strong>, who built Thompson Consulting Group in 2004 into a respected government contracting and advisory firm. That culture of disciplined execution and principled leadership now lives in TCG, led by <strong>Jack Thompson</strong> alongside managing principals <strong>David Thompson</strong>, <strong>James Thompson</strong>, and <strong>Luke Thompson</strong> â a tightly governed family officer group with deep expertise spanning enterprise IT, Department of Defense contracting, and large-scale commercial construction.
+            Thompson Capital Group carries forward a legacy rooted in the founding vision of <strong>Paul "Rod" Thompson</strong>, who built Thompson Consulting Group in 2004 into a respected government contracting and advisory firm. That culture of disciplined execution and principled leadership now lives in TCG, led by <strong>Jack Thompson</strong> alongside managing principals <strong>David Thompson</strong> and <strong>Luke Thompson</strong> — a tightly governed family officer group with deep expertise spanning enterprise IT, Department of Defense contracting, and large-scale commercial construction.
           </p>
           <blockquote class="about-quote">
             "We don't chase deals. We build companies, honor commitments, and create value that endures across generations."
           </blockquote>
           <p class="section-body">
-            This is not a firm assembled from resumes. It is a family with a proven track record across industries where execution matters â where contracts are earned, not awarded, and where operators answer for results with their own name.
+            This is not a firm assembled from resumes. It is a family with a proven track record across industries where execution matters — where contracts are earned, not awarded, and where operators answer for results with their own name.
           </p>
           <div class="about-stats">
             <div class="about-stat">
@@ -1447,6 +1614,39 @@
     </div>
   </section>
 
+  <!-- ========== LEGACY / FOUNDER ========== -->
+  <div class="legacy-strip">
+    <div class="container">
+      <div class="legacy-inner">
+        <div class="legacy-card reveal">
+          <div class="legacy-monogram-wrap">
+            <span class="legacy-monogram">RT</span>
+            <span class="legacy-monogram-tag">In Memoriam</span>
+          </div>
+          <div class="legacy-gold-bar"></div>
+          <div class="legacy-card-info">
+            <div class="legacy-card-name">Paul "Rod" Thompson</div>
+            <div class="legacy-card-title">Founder, Thompson Consulting Group</div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <p class="legacy-label">The Standard We Carry</p>
+          <h2 class="legacy-name">Every Decision Traces Back to One Founder's Standard</h2>
+          <div class="legacy-quote">
+            "Build something worth building. Honor every commitment. Let your name say the rest."
+          </div>
+          <p class="legacy-body">
+            In 2004, Rod founded Thompson Consulting Group and built it into a respected government contracting and advisory firm through decades of principled leadership. His standard — that the family name on the door is both the firmest commitment and the most fragile asset — remains the bedrock of how Thompson Capital Group operates today.
+          </p>
+          <p class="legacy-body">
+            Jack, David, and Luke carry that standard forward every day, in every capital decision the firm makes.
+          </p>
+          <a href="/leadership" class="legacy-link">Meet the Family Officer Council →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ========== EXPERTISE ========== -->
   <section id="expertise" class="section section-off">
     <div class="container">
@@ -1455,7 +1655,7 @@
         <h2 class="section-title">Four Pillars of Capital Deployment</h2>
         <span class="gold-line gold-line--center"></span>
         <p class="section-body" style="margin:0 auto; text-align:center; max-width:580px;">
-          Thompson Capital Group operates at the intersection of consulting, technology, government contracting, and real infrastructure â deploying capital and expertise where others lack the relationships or operational depth to compete.
+          Thompson Capital Group operates at the intersection of consulting, technology, government contracting, and real infrastructure — deploying capital and expertise where others lack the relationships or operational depth to compete.
         </p>
       </div>
       <div class="expertise-grid">
@@ -1473,7 +1673,7 @@
           <p class="expertise-card-body">
             We provide high-conviction strategic advisory to companies navigating growth, operational restructuring, and capital formation. Our principals have advised organizations across government, defense, and private sectors on complex multi-stakeholder decisions.
           </p>
-          <a href="#cta" class="expertise-card-link">Thompson Consulting â</a>
+          <a href="#cta" class="expertise-card-link">Thompson Consulting →</a>
         </div>
 
         <!-- Pillar 2 -->
@@ -1487,8 +1687,8 @@
             With a proven track record executing multi-million dollar federal and Department of Defense contracts, our team brings relationships, clearances, and compliance expertise that institutional partners cannot replicate. We understand the procurement lifecycle from solicitation to award to delivery.
           </p>
           <div>
-            <a href="#cta" class="expertise-card-link">Thompson Solutions Group â</a><br/>
-            <a href="#cta" class="expertise-card-link" style="margin-top:0.5rem;">Thompson Aerospace &amp; Defense â</a>
+            <a href="#cta" class="expertise-card-link">Thompson Solutions Group →</a><br/>
+            <a href="#cta" class="expertise-card-link" style="margin-top:0.5rem;">Thompson Aerospace &amp; Defense →</a>
           </div>
         </div>
 
@@ -1507,7 +1707,7 @@
           <p class="expertise-card-body">
             Our IT leadership has designed, deployed, and managed enterprise-scale technology systems for government agencies and private sector clients. From infrastructure modernization to cybersecurity frameworks, we bring technical depth to capital allocation decisions in the technology sector.
           </p>
-          <a href="#cta" class="expertise-card-link">TGIT (Thompson Group Information Technology) â</a>
+          <a href="#cta" class="expertise-card-link">TGIT (Thompson Group Information Technology) →</a>
         </div>
 
         <!-- Pillar 4 -->
@@ -1526,11 +1726,11 @@
           </p>
           <div>
             <a href="https://truettconstruction.com" target="_blank" rel="noopener" class="expertise-card-link">
-              Truett Construction â
+              Truett Construction →
             </a>
             &nbsp;&nbsp;
             <a href="https://truettroofingva.com" target="_blank" rel="noopener" class="expertise-card-link">
-              Truett Roofing â
+              Truett Roofing →
             </a>
           </div>
         </div>
@@ -1547,7 +1747,7 @@
         <h2 class="section-title section-title--light">Our Flagship Operating Companies</h2>
         <span class="gold-line gold-line--center"></span>
         <p class="section-body section-body--light" style="margin:0 auto; text-align:center;">
-          These are not passive investments. These are owner-operated companies built by the Thompson family â proof of concept for every investment thesis we bring to our partners.
+          These are not passive investments. These are owner-operated companies built by the Thompson family — proof of concept for every investment thesis we bring to our partners.
         </p>
       </div>
       <div class="portfolio-grid">
@@ -1560,11 +1760,25 @@
           </div>
           <span class="portfolio-tag">Vertically Integrated Construction</span>
           <p class="portfolio-card-body">
-            The cornerstone of Thompson Capital Group â a vertically integrated construction and infrastructure company headquartered in Marshall, Virginia with active markets across VA, NC, and FL. Founded by Jack Thompson with 25+ years of hands-on experience in Northern Virginia's demanding market, Truett Construction operates eight specialized in-house divisions: Truett Roofing, Truett Civil, Truett General, Truett Waterproofing, Truett Land &amp; Property, Truett Demolition, Truett Municipal Waste, and Truett Trucking &amp; Logistics. Over 2,500 customers served. One standard of excellence across every project, every phase.
+            The cornerstone of Thompson Capital Group — a vertically integrated construction and infrastructure company headquartered in Marshall, Virginia with active markets across VA, NC, and FL. Founded by Jack Thompson with 25+ years of hands-on experience in Northern Virginia's demanding market, Truett Construction operates eight specialized in-house divisions: Truett Roofing, Truett Civil, Truett General, Truett Waterproofing, Truett Land &amp; Property, Truett Demolition, Truett Municipal Waste, and Truett Trucking &amp; Logistics. One standard of excellence across every project, every phase.
           </p>
+          <div class="portfolio-stats">
+            <div class="portfolio-stat">
+              <span class="portfolio-stat-num">2,500+</span>
+              <span class="portfolio-stat-label">Customers Served</span>
+            </div>
+            <div class="portfolio-stat">
+              <span class="portfolio-stat-num">8</span>
+              <span class="portfolio-stat-label">In-House Divisions</span>
+            </div>
+            <div class="portfolio-stat">
+              <span class="portfolio-stat-num">25+</span>
+              <span class="portfolio-stat-label">Years Experience</span>
+            </div>
+          </div>
           <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
             <a href="https://truettconstruction.com" target="_blank" rel="noopener" class="portfolio-card-link">
-              truettconstruction.com â
+              truettconstruction.com →
             </a>
             <span style="color:rgba(255,255,255,0.25);font-size:0.75rem;">(703) 339-1518</span>
           </div>
@@ -1576,13 +1790,27 @@
           <div class="portfolio-logo-area">
             <span class="portfolio-logo-text">Truett <span>Roofing &amp; Exteriors</span></span>
           </div>
-          <span class="portfolio-tag">Roofing Â· Siding Â· Solar Â· Exteriors</span>
+          <span class="portfolio-tag">Roofing · Siding · Solar · Exteriors</span>
           <p class="portfolio-card-body">
-            Northern Virginia's trusted roofing and exteriors contractor, founded by Jack Thompson in 2014 with 12+ years of hands-on industry experience and 650+ homes personally re-roofed. Licensed and fully insured, Truett Roofing operates with no subcontracting â every project is completed by their own expert crew, backed by warranty. Services span residential and commercial roofing, siding, gutters, windows, doors, solar installation, and Starlink mounting. Headquartered in Marshall, VA with satellite locations in Jacksonville Beach, FL and Wilmington, NC. Significant experience with insurance claims and storm damage restoration.
+            Northern Virginia's trusted roofing and exteriors contractor, founded by Jack Thompson in 2014 with 12+ years of hands-on industry experience. Licensed and fully insured, Truett Roofing operates with no subcontracting — every project is completed by their own expert crew, backed by warranty. Services span residential and commercial roofing, siding, gutters, windows, doors, solar installation, and Starlink mounting. Headquartered in Marshall, VA with satellite locations in Jacksonville Beach, FL and Wilmington, NC. Significant experience with insurance claims and storm damage restoration.
           </p>
+          <div class="portfolio-stats">
+            <div class="portfolio-stat">
+              <span class="portfolio-stat-num">650+</span>
+              <span class="portfolio-stat-label">Homes Re-Roofed</span>
+            </div>
+            <div class="portfolio-stat">
+              <span class="portfolio-stat-num">2014</span>
+              <span class="portfolio-stat-label">Founded</span>
+            </div>
+            <div class="portfolio-stat">
+              <span class="portfolio-stat-num">0</span>
+              <span class="portfolio-stat-label">Subcontracted Jobs</span>
+            </div>
+          </div>
           <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
             <a href="https://truettroofingva.com" target="_blank" rel="noopener" class="portfolio-card-link">
-              truettroofingva.com â
+              truettroofingva.com →
             </a>
             <span style="color:rgba(255,255,255,0.25);font-size:0.75rem;">703-399-1518</span>
           </div>
@@ -1608,7 +1836,7 @@
               <span class="approach-pillar-num">01</span>
               <div>
                 <div class="approach-pillar-title">Operational Accountability First</div>
-                <p class="approach-pillar-body">Every investment we make has an accountable operator behind it. We do not fund ideas â we fund execution. Our principals have operated the businesses we invest in, which means we know the difference between a good pitch and a good company.</p>
+                <p class="approach-pillar-body">Every investment we make has an accountable operator behind it. We do not fund ideas — we fund execution. Our principals have operated the businesses we invest in, which means we know the difference between a good pitch and a good company.</p>
               </div>
             </div>
             <div class="approach-pillar">
@@ -1629,7 +1857,7 @@
               <span class="approach-pillar-num">04</span>
               <div>
                 <div class="approach-pillar-title">Sector Depth Over Breadth</div>
-                <p class="approach-pillar-body">We deploy capital in verticals where we have proprietary knowledge â construction, government contracting, enterprise technology, and infrastructure. We do not venture outside our circle of competence.</p>
+                <p class="approach-pillar-body">We deploy capital in verticals where we have proprietary knowledge — construction, government contracting, enterprise technology, and infrastructure. We do not venture outside our circle of competence.</p>
               </div>
             </div>
           </div>
@@ -1638,7 +1866,7 @@
           <img
             class="approach-image"
             src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80"
-            alt="Large-scale construction site â Thompson Capital Group investment"
+            alt="Large-scale construction site — Thompson Capital Group investment"
             loading="lazy"
           />
           <div class="approach-badge">
@@ -1658,7 +1886,7 @@
         <h2 class="section-title">The Family Officers</h2>
         <span class="gold-line gold-line--center"></span>
         <p class="section-body" style="margin:0 auto; text-align:center;">
-          Thompson Capital Group is governed by a close-knit family officer group â Jack, David, James, and Luke Thompson â carrying forward decades of combined experience across the verticals in which we invest.
+          Thompson Capital Group is governed by a close-knit family officer group — Jack, David, and Luke Thompson — carrying forward decades of combined experience across the verticals in which we invest.
         </p>
       </div>
       <div class="leadership-grid">
@@ -1691,7 +1919,7 @@
           <div class="leader-gold-bar"></div>
           <div class="leader-info">
             <div class="leader-name">Paul "Rod" Thompson</div>
-            <div class="leader-title">Founder, Thompson Consulting Group Â· In Memoriam</div>
+            <div class="leader-title">Founder, Thompson Consulting Group · In Memoriam</div>
             <p class="leader-bio">
               In 2004, Rod founded Thompson Consulting Group and built it into a respected government contracting and advisory firm through decades of principled leadership. The culture of accountability, integrity, and long-term thinking he instilled continues to govern every decision made under the Thompson name. His legacy endures in every company, contract, and commitment the family carries forward.
             </p>
@@ -1715,25 +1943,8 @@
           </div>
         </div>
 
-        <!-- James Thompson -->
-        <div class="leader-card reveal reveal-delay-3">
-          <div class="leader-image-wrap">
-            <div class="leader-image-placeholder">
-              <span class="leader-monogram">JT</span>
-            </div>
-          </div>
-          <div class="leader-gold-bar"></div>
-          <div class="leader-info">
-            <div class="leader-name">James Thompson</div>
-            <div class="leader-title">Managing Principal</div>
-            <p class="leader-bio">
-              James brings operational depth and strategic perspective to Thompson Capital Group's family officer council. As a managing principal, he helps govern the firm's portfolio decisions and maintains the standards of execution the Thompson name demands.
-            </p>
-          </div>
-        </div>
-
         <!-- Luke Thompson -->
-        <div class="leader-card reveal reveal-delay-4">
+        <div class="leader-card reveal reveal-delay-3">
           <div class="leader-image-wrap">
             <div class="leader-image-placeholder">
               <span class="leader-monogram">LT</span>
@@ -1823,7 +2034,7 @@
       <div class="footer-top">
         <div>
           <div class="footer-brand-name">Thompson Capital Group</div>
-          <div class="footer-brand-tag">Legacy Â· Capital Â· Execution</div>
+          <div class="footer-brand-tag">Legacy · Capital · Execution</div>
           <p class="footer-brand-desc">
             A family-owned private investment and consulting firm deploying capital into construction, infrastructure, technology, and government contracting opportunities.
           </p>
@@ -1898,4 +2109,17 @@
     }, { passive: true });
 
     /* ---- Mobile menu ---- */
-    const hamburger = document.getEle
+    const hamburger = document.getElementById('hamburger');
+    const navMobile = document.getElementById('navMobile');
+    hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+    function closeMenu() { navMobile.classList.remove('open'); }
+
+    /* ---- Scroll reveal animations ---- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
