@@ -2268,6 +2268,7 @@
           requestAnimationFrame(() => {
             requestAnimationFrame(() => successEl.classList.add('visible'));
           });
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           throw new Error(result.message || 'Submission failed');
         }
