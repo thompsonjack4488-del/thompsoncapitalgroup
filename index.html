@@ -1276,6 +1276,111 @@
       line-height: 1.6;
     }
 
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 0.5rem 0.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .form-success.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .success-check {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+
+    .success-check-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .success-ring {
+      stroke: rgba(201,165,91,0.35);
+      stroke-width: 1;
+      fill: none;
+      transform-origin: 26px 26px;
+      opacity: 0;
+    }
+
+    .form-success.visible .success-ring {
+      animation: successRing 1.1s ease-out 0.2s forwards;
+    }
+
+    .success-check-circle {
+      stroke: var(--gold);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+    }
+
+    .form-success.visible .success-check-circle {
+      animation: successCircle 0.7s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .success-check-mark {
+      stroke: var(--gold);
+      stroke-width: 3;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+    }
+
+    .form-success.visible .success-check-mark {
+      animation: successMark 0.45s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+    }
+
+    @keyframes successCircle { to { stroke-dashoffset: 0; } }
+    @keyframes successMark { to { stroke-dashoffset: 0; } }
+    @keyframes successRing {
+      0%   { opacity: 0.8; transform: scale(0.8); }
+      100% { opacity: 0;   transform: scale(1.7); }
+    }
+
+    .form-success h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .form-success.visible h3 {
+      animation: successTextIn 0.5s ease 0.5s forwards;
+    }
+
+    .form-success p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 360px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .form-success.visible p {
+      animation: successTextIn 0.5s ease 0.65s forwards;
+    }
+
+    @keyframes successTextIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* =========================================
        FOOTER
     ========================================= */
@@ -2028,6 +2133,17 @@
             <p class="form-error" id="formError" style="display:none; font-size:0.75rem; color:#f2a2a2; text-align:center; margin-top:0.75rem;">Something went wrong submitting your inquiry. Please try again or email us directly.</p>
             <p class="form-note">For qualified inquiries only. Thompson Capital Group does not provide investment advice to the general public. All communications are strictly confidential.</p>
           </form>
+          <div class="form-success" id="formSuccess">
+            <div class="success-check">
+              <svg class="success-check-svg" viewBox="0 0 52 52">
+                <circle class="success-ring" cx="26" cy="26" r="24"/>
+                <circle class="success-check-circle" cx="26" cy="26" r="24"/>
+                <path class="success-check-mark" d="M14 27l7 7 16-16"/>
+              </svg>
+            </div>
+            <h3>Inquiry Received</h3>
+            <p>Thank you for reaching out to Thompson Capital Group. Your inquiry will be reviewed immediately, and a firm principal will personally contact you within 48 hours.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2132,7 +2248,7 @@
       const form = e.target;
       const btn = document.getElementById('submitBtn');
       const errorEl = document.getElementById('formError');
-      const originalText = btn.textContent;
+      const successEl = document.getElementById('formSuccess');
       errorEl.style.display = 'none';
       btn.textContent = 'Submitting…';
       btn.disabled = true;
@@ -2147,23 +2263,18 @@
         const result = await response.json();
 
         if (result.success) {
-          btn.textContent = 'Inquiry Submitted ✓';
-          btn.style.background = '#4a7c59';
-          btn.style.color = '#fff';
-          setTimeout(() => {
-            btn.textContent = originalText;
-            btn.style.background = '';
-            btn.style.color = '';
-            btn.disabled = false;
-            form.reset();
-          }, 4000);
+          form.style.display = 'none';
+          successEl.style.display = 'block';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => successEl.classList.add('visible'));
+          });
         } else {
           throw new Error(result.message || 'Submission failed');
         }
       } catch (err) {
         console.error('Web3Forms submission error:', err);
         errorEl.style.display = 'block';
-        btn.textContent = originalText;
+        btn.textContent = 'Submit Inquiry';
         btn.disabled = false;
       }
     }
