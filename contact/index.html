@@ -101,7 +101,9 @@
     .form-group textarea { height: 120px; resize: vertical; }
     .form-submit { width: 100%; background: var(--gold); color: var(--navy); border: none; padding: 1rem 2rem; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; cursor: pointer; border-radius: 2px; transition: background var(--transition), transform var(--transition); font-family: var(--sans); margin-top: 0.5rem; }
     .form-submit:hover { background: var(--gold2); transform: translateY(-2px); }
+    .form-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
     .form-note { font-size: 0.7rem; color: rgba(255,255,255,0.28); text-align: center; margin-top: 1rem; line-height: 1.6; }
+    .form-error { display: none; font-size: 0.78rem; color: #f2a2a2; text-align: center; margin-top: 0.75rem; }
 
     /* DETAILS STRIP */
     .details-strip { background: var(--offwhite); padding: 5rem 0; }
@@ -232,7 +234,11 @@
         <div class="form-card reveal reveal-delay-2">
           <h3 class="form-card-title">Qualified Inquiry Form</h3>
           <p class="form-card-sub">All submissions are reviewed by a firm principal within 48 business hours. All communications are strictly confidential.</p>
-          <form onsubmit="handleSubmit(event)">
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <input type="hidden" name="access_key" value="4d61a8f0-989c-49d2-a861-c2dffc079370" />
+            <input type="hidden" name="subject" value="New Qualified Inquiry — Thompson Capital Group Contact Page" />
+            <input type="hidden" name="from_name" value="Thompson Capital Group Website" />
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name</label>
@@ -278,6 +284,7 @@
               <textarea id="message" name="message" placeholder="Please briefly describe your inquiry, investment profile, or the nature of the partnership you are exploring. The more context you provide, the more productively we can engage."></textarea>
             </div>
             <button type="submit" class="form-submit" id="submitBtn">Submit Inquiry</button>
+            <p class="form-error" id="formError">Something went wrong submitting your inquiry. Please try again or email us directly.</p>
             <p class="form-note">For qualified inquiries only. Thompson Capital Group does not provide investment advice to the general public. All communications are strictly confidential and protected.</p>
           </form>
         </div>
@@ -370,20 +377,45 @@
     }, { threshold: 0.08 });
     revealEls.forEach(el => observer.observe(el));
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
+      const form = e.target;
       const btn = document.getElementById('submitBtn');
-      btn.textContent = 'Inquiry Submitted ✓';
-      btn.style.background = '#4a7c59';
-      btn.style.color = '#fff';
+      const errorEl = document.getElementById('formError');
+      const originalText = btn.textContent;
+      errorEl.style.display = 'none';
+      btn.textContent = 'Submitting…';
       btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Submit Inquiry';
-        btn.style.background = '';
-        btn.style.color = '';
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          btn.textContent = 'Inquiry Submitted ✓';
+          btn.style.background = '#4a7c59';
+          btn.style.color = '#fff';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+            btn.style.color = '';
+            btn.disabled = false;
+            form.reset();
+          }, 4000);
+        } else {
+          throw new Error(result.message || 'Submission failed');
+        }
+      } catch (err) {
+        console.error('Web3Forms submission error:', err);
+        errorEl.style.display = 'block';
+        btn.textContent = originalText;
         btn.disabled = false;
-        e.target.reset();
-      }, 4000);
+      }
     }
   </script>
 </body>
